@@ -67,7 +67,7 @@ TextTable = (Rows, Options = {}) ->
             W
 
     -- Default aligns
-    Aligns = map Widths, (_, I) -> Options.align[I] or 'left'
+    Aligns = map Widths, (I) => Options.align[I] or 'left'
 
     -- Fill empty columns
     FilledRows = map Rows, (Row, I) ->

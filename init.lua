@@ -103,7 +103,7 @@ TextTable = function(Rows, Options)
       return W
     end))
   end
-  local Aligns = map(Widths, function(_, I)
+  local Aligns = map(Widths, function(self, I)
     return Options.align[I] or 'left'
   end)
   local FilledRows = map(Rows, function(Row, I)

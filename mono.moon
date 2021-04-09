@@ -48,8 +48,8 @@ TextTable = (Rows, Options = {}) ->
 
     -- Get column count
     Columns = max map Rows, (Row, I) ->
-        if 'table' == type Row
-            #Row
+        assert 'table' == type(Row), 'invalid row at index ' .. I
+        #Row
 
     Options.columns = Columns
 

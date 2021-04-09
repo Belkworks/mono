@@ -78,9 +78,8 @@ TextTable = function(Rows, Options)
     right = ''
   })
   local Columns = max(map(Rows, function(Row, I)
-    if 'table' == type(Row) then
-      return #Row
-    end
+    assert('table' == type(Row), 'invalid row at index ' .. I)
+    return #Row
   end))
   Options.columns = Columns
   local Widths = { }

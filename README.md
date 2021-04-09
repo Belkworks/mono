@@ -4,7 +4,7 @@
 
 **Importing with [Neon](https://github.com/Belkworks/NEON)**:
 ```lua
-TextTable = NEON:github('belkworks', 'Mono')
+TextTable = NEON:github('belkworks', 'mono')
 ```
 
 ## Example

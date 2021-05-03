@@ -6,17 +6,6 @@ defaults = function(Object, Props)
     end
   end
 end
-local reduce
-reduce = function(List, Fn, State)
-  for I, V in pairs(List) do
-    if State == nil and I == 1 then
-      State = V
-    else
-      State = Fn(State, V, I, List)
-    end
-  end
-  return State
-end
 local map
 map = function(List, Fn)
   local _tbl_0 = { }
@@ -33,9 +22,18 @@ unary = function(Fn)
 end
 local max
 max = function(List)
-  return reduce(List, function(s, v)
-    return math.max(s, v)
-  end)
+  do
+    local result = nil
+    for _index_0 = 1, #List do
+      local N = List[_index_0]
+      if result then
+        result = math.max(result, N)
+      else
+        result = N
+      end
+    end
+    return result
+  end
 end
 local AlignLeft
 AlignLeft = function(Str, Width, Fill)

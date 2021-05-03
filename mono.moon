@@ -4,19 +4,16 @@
 defaults = (Object, Props) ->
     Object[i] = v for i, v in pairs Props when Object[i] == nil
 
-reduce = (List, Fn, State) -> -- Reduces list to single value, state defaults to first value
-    for I, V in pairs List
-        State = if State == nil and I == 1 -- skip the first
-            V -- default to first value
-        else Fn State, V, I, List
-
-    State
-
 map = (List, Fn) -> {I, Fn V, I, List for I, V in pairs List}
 
 unary = (Fn) -> (V) -> Fn V
 
-max = (List) -> reduce List, (s, v) -> math.max s, v
+max = (List) ->
+    with result = nil
+        for N in *List
+            result = if result
+                math.max result, N
+            else N
 
 -- 'hello' -> 'hello         '
 AlignLeft = (Str, Width, Fill = ' ') ->

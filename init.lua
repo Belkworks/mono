@@ -14,6 +14,13 @@ map = function(List, Fn)
   end
   return _tbl_0
 end
+local isEmpty
+isEmpty = function(List)
+  for i, v in pairs(List) do
+    return false
+  end
+  return true
+end
 local unary
 unary = function(Fn)
   return function(V)
@@ -67,6 +74,9 @@ local TextTable
 TextTable = function(Rows, Options)
   if Options == nil then
     Options = { }
+  end
+  if isEmpty(Rows) then
+    return { }
   end
   defaults(Options, {
     align = { },

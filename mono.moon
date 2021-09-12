@@ -6,6 +6,10 @@ defaults = (Object, Props) ->
 
 map = (List, Fn) -> {I, Fn V, I, List for I, V in pairs List}
 
+isEmpty = (List) ->
+    return false for i, v in pairs List
+    true
+
 unary = (Fn) -> (V) -> Fn V
 
 max = (List) ->
@@ -35,6 +39,8 @@ AlignCenter = (Str, Width, Fill = ' ') ->
     AlignLeft S, Width, Fill
 
 TextTable = (Rows, Options = {}) ->
+    return {} if isEmpty Rows
+
     defaults Options, {
         align: {}
         widths: {}
